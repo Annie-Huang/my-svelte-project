@@ -1,6 +1,8 @@
 <script>
+    import Surname from "./Surname.svelte";
+
 	// export let name;
-	let name = "Tomasz";
+	let name = "John";
 </script>
 
 <style>
@@ -10,4 +12,5 @@
 	}
 </style>
 
-<h1 class="headerText">Hello {name.toUpperCase()}!</h1>
+<h1 class="headerText">My name is {name.toUpperCase()}!</h1>
+<Surname />
