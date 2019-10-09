@@ -16,5 +16,5 @@
 <h1 class="headerText">My name is {name.toUpperCase()}!</h1>
 <Surname />
 
-<UserInfo name={'Tomasz'} surname={'Kowalski'}></UserInfo>
-<UserInfo surname={'Kowalski'}></UserInfo>
+<UserInfo name={'Tomasz'} surname={'Kowalski'} />
+<UserInfo surname={'Kowalski'} />
