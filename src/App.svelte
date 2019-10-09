@@ -4,10 +4,10 @@
 </script>
 
 <style>
-	h1 {
-		color: purple;
+	.headerText {
+		color: powderblue;
+        font-family: "Comic Sans MS";
 	}
 </style>
 
-<h1>Hello {name.toUpperCase()}!</h1>
-<h3>Hello egghead!</h3>
+<h1 class="headerText">Hello {name.toUpperCase()}!</h1>
