@@ -1,5 +1,6 @@
 <script>
-	export let name;
+	// export let name;
+	let name = "Tomasz";
 </script>
 
 <style>
@@ -8,4 +9,5 @@
 	}
 </style>
 
-<h1>Hello {name}!</h1>
+<h1>Hello {name.toUpperCase()}!</h1>
+<h3>Hello egghead!</h3>
