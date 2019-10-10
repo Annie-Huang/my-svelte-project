@@ -1,5 +1,7 @@
 https://egghead.io/playlists/getting-started-with-svelte-3-05a8541a
 
+https://github.com/Annie-Huang/my-svelte-project
+
 =============================
 
 C:\react>npx degit sveltejs/template my-svelte-project
