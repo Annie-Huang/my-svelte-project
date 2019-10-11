@@ -8,6 +8,14 @@
 	let name = "John";
 
 	let displayInfoMessage = false;
+
+    let count = 0;
+    // let squared;
+    $: squared = count ** 2;
+    $: squaredMinusOne = squared - 1;
+    function handleClick() {
+        count += 1;
+    }
 </script>
 
 <style>
@@ -43,3 +51,7 @@
     <h1 transition:fade={{ delay: 250, duration: 300 }}>Thank you2!</h1>
     <h1 transition:blur>Thank you3!</h1>
 {/if}
+
+<button on:click={handleClick}>Counter: {count}</button>
+<h1>Sqaure of the counter is {squared}</h1>
+<h1>Sqaure of the counter minus one is {squaredMinusOne}</h1>
