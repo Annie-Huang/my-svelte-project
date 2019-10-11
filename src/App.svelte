@@ -16,6 +16,25 @@
     function handleClick() {
         count += 1;
     }
+
+    let cities = [
+        {
+            id: "3287",
+            name: "London"
+        },
+        {
+            id: "3914",
+            name: "Warsaw"
+        },
+        {
+            id: "8833",
+            name: "Berlin"
+        },
+        {
+            id: "3231",
+            name: "Lisbon"
+        }
+    ];
 </script>
 
 <style>
@@ -55,3 +74,15 @@
 <button on:click={handleClick}>Counter: {count}</button>
 <h1>Sqaure of the counter is {squared}</h1>
 <h1>Sqaure of the counter minus one is {squaredMinusOne}</h1>
+
+<h1>European cities:</h1>
+<!--<ui>-->
+<!--    {#each cities as city, index}-->
+<!--        <li>{index + 1}: {city.name}</li>-->
+<!--    {/each}-->
+<!--</ui>-->
+<ui>
+    {#each cities as {id, name}, index}
+        <li>{index + 1}: {name} (id: {id})</li>
+    {/each}
+</ui>
