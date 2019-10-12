@@ -1,6 +1,9 @@
 <script>
     import Surname from "./Surname.svelte";
     import UserInfo from "./UserInfo.svelte";
+    import { store } from "./store";
+    import Incrementer from "./Incremementer.svelte";
+    import Decrementer from "./Decremementer.svelte";
 
     import { slide, fade, blur } from "svelte/transition";
     import { onMount } from "svelte";
@@ -74,7 +77,13 @@
         // Important thing to know about the onmount is that whenever a function passed in as an argument is going to
         // return another function, this function is going to actually get called whenever the component is being destroyed.
         return () => console.log('Destroyed');
-    })
+    });
+
+
+///////////////////////////////////////////////
+    let countValue;
+    store.subscribe(value => (countValue = value));
+
 </script>
 
 <style>
@@ -83,6 +92,13 @@
         font-family: "Comic Sans MS";
 	}
 </style>
+
+<h1>The count is {countValue}</h1>
+<Incrementer />
+<Decrementer />
+
+<!-------------------------------------------------------------------->
+
 <ul>
     {#each characters as { name, height, birth_year }}
         <li>
