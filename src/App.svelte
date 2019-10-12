@@ -4,6 +4,7 @@
     import { store } from "./store";
     import Incrementer from "./Incremementer.svelte";
     import Decrementer from "./Decremementer.svelte";
+    import Setter from "./Setter.svelte";
 
     import { slide, fade, blur } from "svelte/transition";
     import { onMount } from "svelte";
@@ -96,6 +97,7 @@
 <h1>The count is {countValue}</h1>
 <Incrementer />
 <Decrementer />
+<Setter />
 
 <!-------------------------------------------------------------------->
 
