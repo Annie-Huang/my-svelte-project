@@ -7,7 +7,7 @@
     import Setter from "./Setter.svelte";
 
     import { slide, fade, blur } from "svelte/transition";
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
 
 	// export let name;
 	let name = "John";
@@ -83,8 +83,8 @@
 
 ///////////////////////////////////////////////
     let countValue;
-    store.subscribe(value => (countValue = value));
-
+    // const unsubscribe = store.subscribe(value => (countValue = value));
+    // onDestroy(unsubscribe);
 </script>
 
 <style>
@@ -94,7 +94,13 @@
 	}
 </style>
 
-<h1>The count is {countValue}</h1>
+<!--Basically, if you have a $ and the variable name imported from the store, Svelte is going to assume
+    that we want to refer to the value stored within the store. Right now, if I increment, decrement,
+    and send the counter value, it's going to work as intended with much less boilerplate.
+    This value is going to be unsubscribed by default whenever we destroy the component.
+    As such, we won't have any memory leaks.-->
+<!--<h1>The count is {countValue}</h1>-->
+<h1>The count is {$store}</h1>
 <Incrementer />
 <Decrementer />
 <Setter />
