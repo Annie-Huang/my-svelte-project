@@ -7,7 +7,10 @@
     import Setter from "./Setter.svelte";
 
     import { slide, fade, blur } from "svelte/transition";
+    import { tweened } from "svelte/motion";
+    import { bounceInOut } from "svelte/easing";
     import { onMount, onDestroy } from "svelte";
+    import { writable } from "svelte/store";
 
 	// export let name;
 	let name = "John";
@@ -85,6 +88,13 @@
     let countValue;
     // const unsubscribe = store.subscribe(value => (countValue = value));
     // onDestroy(unsubscribe);
+
+///////////////////////////////////////////////
+//     const progress = writable(0);
+    const progress = tweened(0, {
+        duration: 5000,
+        easing: bounceInOut
+    });
 </script>
 
 <style>
@@ -92,7 +102,26 @@
 		color: powderblue;
         font-family: "Comic Sans MS";
 	}
+
+    progress {
+        display: block;
+        width: 100%;
+    }
 </style>
+
+<h1>Installing Windows 95...</h1>
+<progress value={$progress} />
+<sub>2 weeks remaining...</sub>
+
+<button on:click={() => progress.set(0)}>0%</button>
+<button on:click={() => progress.set(0.75)}>75%</button>
+<button on:click={() => progress.set(1.0)}>100%</button>
+
+{#if $progress === 1.0}
+    <h1>Windows 95 installed, hooray!</h1>
+{/if}
+
+<!-------------------------------------------------------------------->
 
 <!--Basically, if you have a $ and the variable name imported from the store, Svelte is going to assume
     that we want to refer to the value stored within the store. Right now, if I increment, decrement,
