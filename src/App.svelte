@@ -35,6 +35,21 @@
             name: "Lisbon"
         }
     ];
+
+///////////////////////////////////////////////
+    async function getRandomStarWarsCharacter() {
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        const apiResponse = await fetch(
+                `https://swapi.co/api/people/${randomNumber}/`
+        );
+
+        return await apiResponse.json();
+    }
+
+    // let character;
+    // getRandomStarWarsCharacter().then(value => (character = value));
+    let promise = getRandomStarWarsCharacter();
+
 </script>
 
 <style>
@@ -43,6 +58,17 @@
         font-family: "Comic Sans MS";
 	}
 </style>
+
+<!--<h1>{!character ? 'Loading...' : character.name}</h1>-->
+<!--{#await promise then character}-->
+{#await promise}
+    <h1>Loading...</h1>
+{:then character}
+    <h1>{character.name}</h1>
+{/await}
+
+
+<!-------------------------------------------------------------------->
 
 <h1 class="headerText">My name is {name.toUpperCase()}!</h1>
 <Surname />
