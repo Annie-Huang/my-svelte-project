@@ -3,6 +3,7 @@
     import UserInfo from "./UserInfo.svelte";
 
     import { slide, fade, blur } from "svelte/transition";
+    import { onMount } from "svelte";
 
 	// export let name;
 	let name = "John";
@@ -59,6 +60,21 @@
     function handleInput1(event) {
         name1 = event.target.value;
     }
+
+///////////////////////////////////////////////
+
+    let characters = [];
+
+    onMount(async () => {
+        const apiResponse = await fetch(`https://swapi.co/api/people/`);
+        const swPeopleJSON = await apiResponse.json();
+
+        characters = swPeopleJSON.results;
+
+        // Important thing to know about the onmount is that whenever a function passed in as an argument is going to
+        // return another function, this function is going to actually get called whenever the component is being destroyed.
+        return () => console.log('Destroyed');
+    })
 </script>
 
 <style>
@@ -67,6 +83,19 @@
         font-family: "Comic Sans MS";
 	}
 </style>
+<ul>
+    {#each characters as { name, height, birth_year }}
+        <li>
+            <strong>{name}</strong>
+            (height: {height}cm, birth year: {birth_year})
+        </li>
+    {:else}
+        <p>Loading...</p>
+    {/each}
+</ul>
+
+<!-------------------------------------------------------------------->
+
 
 <h1>Introduce yourself: </h1>
 <input type="text" on:change={handleInput1}/>
