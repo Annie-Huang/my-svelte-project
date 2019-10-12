@@ -50,6 +50,15 @@
     // getRandomStarWarsCharacter().then(value => (character = value));
     let promise = getRandomStarWarsCharacter();
 
+///////////////////////////////////////////////
+    let name1;
+    function handleClick1() {
+        alert("Hello " + name1);
+    }
+    
+    function handleInput1(event) {
+        name1 = event.target.value;
+    }
 </script>
 
 <style>
@@ -58,6 +67,14 @@
         font-family: "Comic Sans MS";
 	}
 </style>
+
+<h1>Introduce yourself: </h1>
+<input type="text" on:change={handleInput1}/>
+<!--Once trigger once for this event handler-->
+<button on:click|once={handleClick1}>Click me</button>
+<button on:click|preventDefault|once={handleClick1}>Click me</button>
+
+<!-------------------------------------------------------------------->
 
 <!--<h1>{!character ? 'Loading...' : character.name}</h1>-->
 <!--{#await promise then character}-->
